@@ -60,7 +60,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'goodfreelance.urls'
+ROOT_URLCONF = 'goodtrain.urls'
 
 TEMPLATES = [
     {
@@ -80,7 +80,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'goodfreelance.wsgi.application'
+WSGI_APPLICATION = 'goodtrain.wsgi.application'
 
 
 # Database
