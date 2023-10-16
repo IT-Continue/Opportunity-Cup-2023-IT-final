@@ -1186,7 +1186,7 @@ a {
 }
 
 .room__message > form > input::placeholder {
-  color: var(--color-light-gray);
+  color: var(--color-dark);
 }
 
 .participants__top span {
