@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.contrib.auth import authenticate, login, logout
-from .models import User, Topic, JobStatus, Job, MatchType, Match, ReviewType, Review, Message
+from .models import User, Train, JobStatus, Job, MatchType, Match, ReviewType, Review, Message
 from .forms import JobForm, UserForm, MyUserCreationForm
 
 
@@ -74,21 +74,21 @@ def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
 
     jobs = Job.objects.filter(
-        Q(topic__name__icontains=q) |
+        Q(train__name__icontains=q) |
         Q(name__icontains=q) |
         Q(description__icontains=q)
     )
 
-    topics = Topic.objects.all()[0:5]
+    trains = Train.objects.all()[0:5]
     job_count = jobs.count()
     job_messages = Message.objects.filter(
-        Q(job__topic__name__icontains=q))[0:3]
+        Q(job__train__name__icontains=q))[0:3]
 
     job_to_customer = get_job_to_customer(jobs)  
 
     context = {'jobs': jobs, 
                'job_to_customer': job_to_customer, 
-               'topics': topics,
+               'trains': trains,
                'job_count': job_count, 
                'job_messages': job_messages}
     
@@ -132,10 +132,10 @@ def userProfile(request, pk):
         Match.objects.filter(user=user, type=MatchType.objects.get_or_create(name='Customer')[0].id).values('job')
     ])
     job_messages = user.message_set.all()
-    topics = Topic.objects.all()
+    trains = Train.objects.all()
     job_to_customer = get_job_to_customer(jobs)
     context = {'user': user, 'job_to_customer': job_to_customer,
-               'job_messages': job_messages, 'topics': topics}
+               'job_messages': job_messages, 'trains': trains}
     return render(request, 'base/profile.html', context)
 
 def userBalance(request, pk): # TODO:
@@ -151,13 +151,13 @@ def userBalance(request, pk): # TODO:
 @login_required(login_url='login')
 def createJob(request):
     form = JobForm()
-    topics = Topic.objects.all()
+    trains = Train.objects.all()
     if request.method == 'POST':
-        topic_name = request.POST.get('topic')
-        topic, created = Topic.objects.get_or_create(name=topic_name)
+        train_name = request.POST.get('train')
+        train, created = Train.objects.get_or_create(name=train_name)
 
         job = Job.objects.create(
-            topic=topic,
+            train=train,
             name=request.POST.get('name'),
             description=request.POST.get('description'),
             status = JobStatus.objects.get_or_create(name='Find performer')[0],
@@ -172,7 +172,7 @@ def createJob(request):
         match.save()
         return redirect('home')
 
-    context = {'form': form, 'topics': topics}
+    context = {'form': form, 'trains': trains}
     return render(request, 'base/job_form.html', context)
 
 
@@ -180,23 +180,23 @@ def createJob(request):
 def updateJob(request, pk):
     job = Job.objects.get(id=pk)
     form = JobForm(instance=job)
-    topics = Topic.objects.all()
+    trains = Train.objects.all()
     customer_id = Match.objects.filter(job=job, type=MatchType.objects.get_or_create(name='Customer')[0]).values('user')
     job_customer = User.objects.filter(id=customer_id[0]['user'])[0]
     if request.user != job_customer:
         return HttpResponse('Your are not allowed here!!')
 
     if request.method == 'POST':
-        topic_name = request.POST.get('topic')
-        topic, created = Topic.objects.get_or_create(name=topic_name)
+        train_name = request.POST.get('train')
+        train, created = Train.objects.get_or_create(name=train_name)
         job.name = request.POST.get('name')
-        job.topic = topic
+        job.train = train
         job.description = request.POST.get('description')
         job.cost = request.POST.get('cost')
         job.save()
         return redirect('home')
 
-    context = {'form': form, 'topics': topics, 'job': job}
+    context = {'form': form, 'trains': trains, 'job': job}
     
     return render(request, 'base/job_form.html', context)
 
@@ -247,10 +247,10 @@ def updateUser(request):
     return render(request, 'base/update-user.html', {'form': form})
 
 
-def topicsPage(request):
+def trainsPage(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
-    topics = Topic.objects.filter(name__icontains=q)
-    return render(request, 'base/topics.html', {'topics': topics})
+    trains = Train.objects.filter(name__icontains=q)
+    return render(request, 'base/trains.html', {'trains': trains})
 
 
 def activityPage(request):

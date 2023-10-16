@@ -14,7 +14,7 @@ class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
-class Topic(models.Model):
+class Train(models.Model):
     name = models.CharField(max_length=200)
 
     def __str__(self):
@@ -27,7 +27,7 @@ class Transaction(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
-class Topic(models.Model):
+class Train(models.Model):
     name = models.CharField(max_length=200)
 
     def __str__(self):
@@ -46,7 +46,7 @@ class Job(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
-    topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True)
+    train = models.ForeignKey(Train, on_delete=models.SET_NULL, null=True)
     status = models.ForeignKey(JobStatus, on_delete=models.SET_NULL, null=True)
 
     class Meta:

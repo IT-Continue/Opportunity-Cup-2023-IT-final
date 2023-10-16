@@ -14,7 +14,7 @@ class MyUserCreationForm(UserCreationForm):
 class JobForm(ModelForm):
     class Meta:
         model = Job
-        fields = ['name', 'description', 'topic', 'cost']
+        fields = ['name', 'description', 'train', 'cost']
         exclude = []
         widgets = {
             'cost' : forms.TextInput(attrs = {'placeholder': '1000 руб'}),

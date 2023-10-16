@@ -18,6 +18,6 @@ urlpatterns = [
 
     path('update-user/', views.updateUser, name="update-user"),
 
-    path('topics/', views.topicsPage, name="topics"),
+    path('trains/', views.trainsPage, name="trains"),
     path('activity/', views.activityPage, name="activity"),
 ]
