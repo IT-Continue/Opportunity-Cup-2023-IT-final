@@ -624,31 +624,31 @@ a {
 }
 
 /*==============================
-=>  Job List
+=>  Room List
 ================================*/
 
-.jobList__header {
+.roomList__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2.4rem;
 }
 
-.jobList__header h2 {
+.roomList__header h2 {
   text-transform: uppercase;
   font-weight: 500;
   color: var(--color-light);
   letter-spacing: 1px;
 }
 
-.jobList__header p {
+.roomList__header p {
   font-weight: 500;
   color: var(--color-dark-light);
 }
 
-/*========== Job List Job ==========*/
+/*========== Room List Room ==========*/
 
-.jobListJob {
+.roomListRoom {
   margin-bottom: 2.4rem;
   background-color: var(--color-dark);
   border-radius: 1rem;
@@ -656,47 +656,47 @@ a {
   border: 2px solid var(--color-main);
 }
 
-.jobListJob__header {
+.roomListRoom__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.jobListJob__author {
+.roomListRoom__author {
   font-weight: 500;
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-.jobListJob__actions {
+.roomListRoom__actions {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
   position: relative;
 }
 
-.jobListJob__actions span {
+.roomListRoom__actions span {
   font-size: 1.4rem;
   font-weight: 500;
 }
 
-.jobListJob__actions svg {
+.roomListRoom__actions svg {
   fill: var(--color-main);
 
   width: 1.6rem;
   height: 1.6rem;
 }
 
-.jobListJob__content {
+.roomListRoom__content {
   margin: 1rem 0;
 }
 
-.jobListJob__content > .cost{
+.roomListRoom__content > .cost{
   margin-right: auto;
 }
 
-.jobListJob__content a {
+.roomListRoom__content a {
   font-size: 2rem;
   font-weight: 500;
   margin-bottom: 1.5rem;
@@ -704,11 +704,11 @@ a {
   transition: all 0.3s ease-in-out;
 }
 
-.jobListJob__content a:hover {
+.roomListRoom__content a:hover {
   color: var(--color-main);
 }
 
-.jobListJob__meta {
+.roomListRoom__meta {
   border-top: 1px solid var(--color-dark-medium);
   padding-top: 1rem;
   display: flex;
@@ -716,7 +716,7 @@ a {
   justify-content: space-between;
 }
 
-.jobListJob__joined {
+.roomListRoom__joined {
   color: var(--color-light-gray);
   display: flex;
   align-items: center;
@@ -725,13 +725,13 @@ a {
   font-weight: 500;
 }
 
-.jobListJob__joined svg {
+.roomListRoom__joined svg {
   fill: var(--color-main);
   width: 1.6rem;
   height: 1.6rem;
 }
 
-.jobListJob__train {
+.roomListRoom__train {
   padding: 5px 1.5rem;
   background-color: var(--color-dark-medium);
   border-radius: 5rem;
@@ -789,7 +789,7 @@ a {
   text-decoration: underline;
 }
 
-.activities__boxJobContent {
+.activities__boxRoomContent {
   background: var(--color-bg);
   padding: 1rem;
   border-radius: 5px;
@@ -797,15 +797,15 @@ a {
   margin-left: -4.2rem;
 }
 
-.jobListJob__actions svg {
+.roomListRoom__actions svg {
   fill: var(--color-light-gray);
 }
 
 /*==============================
-=>  Create Job
+=>  Create Room
 ================================*/
 
-.create-job.layout .layout__box {
+.create-room.layout .layout__box {
   max-width: 68rem;
 }
 
@@ -945,19 +945,19 @@ a {
   margin-bottom: 0.5rem;
 }
 
-.profile-page .jobList__header {
+.profile-page .roomList__header {
   margin-bottom: 1.5rem;
 }
 
-.profile-page .jobList__header h2 {
+.profile-page .roomList__header h2 {
   color: var(--color-dark-light);
 }
 
 /*==============================
-=>  Job
+=>  Room
 ================================*/
 
-.job,
+.room,
 .participants {
   background: var(--color-dark);
   max-height: 87.5vh;
@@ -976,7 +976,7 @@ a {
   }
 }
 
-.job__top,
+.room__top,
 .participants__top {
   background: var(--color-dark-light);
   display: flex;
@@ -986,7 +986,7 @@ a {
   position: relative;
 }
 
-.job__top svg,
+.room__top svg,
 .thread__top svg {
   width: 1.6rem;
   height: 1.6rem;
@@ -994,35 +994,35 @@ a {
   cursor: pointer;
 }
 
-.job__topLeft {
+.room__topLeft {
   display: flex;
   align-items: flex-end;
   gap: 1rem;
 }
 
-.job__topLeft h3,
+.room__topLeft h3,
 .participants__top {
   text-transform: uppercase;
   font-weight: 500;
   color: var(--color-light);
 }
 
-.job__topLeft svg {
+.room__topLeft svg {
   width: 1.6rem;
   height: 1.6rem;
   fill: var(--color-light);
 }
 
-.job__topRight {
+.room__topRight {
   display: flex;
   column-gap: 1em;
 }
 
-.job__topRight svg {
+.room__topRight svg {
   fill: var(--color-main-light);
 }
 
-.job__header {
+.room__header {
   max-height: 30vh;
   overflow-y: auto;
   position: absolute;
@@ -1035,13 +1035,13 @@ a {
 }
 
 @media screen and (max-width: 500px) {
-  .job__header {
+  .room__header {
     top: 4.3rem;
     padding-right: 2rem;
   }
 }
 
-.job__box {
+.room__box {
   padding-left: 2rem;
   padding-right: 2rem;
   height: 80.5vh;
@@ -1050,7 +1050,7 @@ a {
 }
 
 @media screen and (max-width: 500px) {
-  .job__box {
+  .room__box {
     padding-left: 2.5rem;
     padding-right: 2rem;
     height: 80.5vh;
@@ -1059,18 +1059,18 @@ a {
   }
 }
 
-.job__info {
+.room__info {
   display: flex;
   justify-content: space-between;
 }
 
-.job__info h3 {
+.room__info h3 {
   font-size: 2.4rem;
   font-weight: 500;
   color: var(--color-main);
 }
 
-.job__hosted p {
+.room__hosted p {
   text-transform: uppercase;
   color: var(--color-gray);
   font-size: 1.2rem;
@@ -1078,7 +1078,7 @@ a {
   line-height: 2;
 }
 
-.job__author {
+.room__author {
   display: flex;
   gap: 1rem;
   align-items: center;
@@ -1086,11 +1086,11 @@ a {
   transition: all 0.3s ease-in-out;
 }
 
-.job__author:hover {
+.room__author:hover {
   text-decoration: underline;
 }
 
-.job__trains {
+.room__trains {
   padding: 0.5rem 1.5rem;
   background: var(--color-dark-light);
   color: var(--color-light);
@@ -1100,7 +1100,7 @@ a {
   margin: 1rem 0;
 }
 
-.job__conversation {
+.room__conversation {
   margin-top: 1rem;
   margin-bottom: 4rem;
   height: 64%;
@@ -1156,7 +1156,7 @@ a {
   margin-top: 0.5rem;
 }
 
-.job__message {
+.room__message {
   padding: 2rem;
   position: absolute;
   z-index: 111;
@@ -1166,7 +1166,7 @@ a {
   background: transparent;
 }
 
-.job__message > form > input {
+.room__message > form > input {
   resize: none;
   background-color: var(--color-dark-light);
   color: var(--color-light);
@@ -1182,7 +1182,7 @@ a {
   position: relative;
 }
 
-.job__message > form > input::placeholder {
+.room__message > form > input::placeholder {
   color: var(--color-light-gray);
 }
 

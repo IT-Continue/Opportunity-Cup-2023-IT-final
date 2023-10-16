@@ -10,8 +10,8 @@
 
     <!-- Trains End -->
 
-    <!-- Job List Start -->
-    <div class="jobList">
+    <!-- Room List Start -->
+    <div class="roomList">
       <div class="mobile-menu">
         <form action="{% url 'home' %}" method="GET" class="header__search">
           <label>
@@ -30,13 +30,13 @@
         </div>
       </div>
 
-      <div class="jobList__header">
+      <div class="roomList__header">
         <div>
           <h2>Поезда</h2>
-          <p>Доступно: {{job_count}} купе</p>
+          <p>Доступно: {{room_count}} купе</p>
         </div>
 
-        <a class="btn btn--main" href="{% url 'create-job' %}">
+        <a class="btn btn--main" href="{% url 'create-room' %}">
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
             <title>add</title>
             <path
@@ -50,7 +50,7 @@
       {% include 'base/feed_component.html' %}
 
     </div>
-    <!-- Job List End -->
+    <!-- Room List End -->
 
     <!-- Activities Start -->
     {% include 'base/activity_component.html' %}

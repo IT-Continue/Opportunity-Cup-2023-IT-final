@@ -3,10 +3,10 @@
 {% block content %}
 <main class="profile-page layout layout--2">
   <div class="container">
-    <!-- Job Start -->
-    <div class="job">
-      <div class="job__top">
-        <div class="job__topLeft">
+    <!-- Room Start -->
+    <div class="room">
+      <div class="room__top">
+        <div class="room__topLeft">
           <a href="{% url 'home' %}">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
               <title>arrow-left</title>
@@ -17,9 +17,9 @@
           </a>
           <h3>Купе</h3>
         </div>
-        {% if job_customer == request.user %}
-        <div class="job__topRight">
-          <a href="{% url 'update-job' job.id %}">
+        {% if room_customer == request.user %}
+        <div class="room__topRight">
+          <a href="{% url 'update-room' room.id %}">
             <svg enable-background="new 0 0 24 24" height="32" viewBox="0 0 24 24" width="32"
               xmlns="http://www.w3.org/2000/svg">
               <title>edit</title>
@@ -38,7 +38,7 @@
               </g>
             </svg>
           </a>
-          <a href="{% url 'delete-job' job.id %}">
+          <a href="{% url 'delete-room' room.id %}">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
               <title>remove</title>
               <path
@@ -50,34 +50,34 @@
         {% endif %}
 
       </div>
-      <div class="job__box scroll">
-        <div class="job__header scroll">
-          <div class="job__info">
-            <h3>{{job.name}}</h3>
-            <span>{{job.created|timesince}} назад</span>
+      <div class="room__box scroll">
+        <div class="room__header scroll">
+          <div class="room__info">
+            <h3>{{room.name}}</h3>
+            <span>{{room.created|timesince}} назад</span>
           </div>
-          <div class="job__hosted">
+          <div class="room__hosted">
             <p>Создатель купе</p>
-            <a href="{% url 'user-profile' job_customer.id %}" class="job__author">
+            <a href="{% url 'user-profile' room_customer.id %}" class="room__author">
               <div class="avatar avatar--small">
-                <img src="{{job_customer.avatar.url}}" />
+                <img src="{{room_customer.avatar.url}}" />
               </div>
-              <span>@{{job_customer.username}}</span>
+              <span>@{{room_customer.username}}</span>
             </a>
           </div>
-          <!-- <div class="job__details">
+          <!-- <div class="room__details">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi, tenetur laudantium? Dicta repellendus
             rerum consectetur, voluptatem repudiandae eum ea porro cupiditate provident nulla, deserunt, ab ipsum
             corporis laboriosam deleniti molestias?
           </div> -->
-          <span class="job__trains">{{job.train}}</span>
+          <span class="room__trains">{{room.train}}</span>
         </div>
 
-        <div class="job__conversation">
+        <div class="room__conversation">
           <div class="threads scroll">
 
 
-            {% for message in job_messages %}
+            {% for message in room_messages %}
             <div class="thread">
               <div class="thread__top">
                 <div class="thread__author">
@@ -112,7 +112,7 @@
         </div>
       </div>
       
-      <div class="job__message">
+      <div class="room__message">
         {% if request.user.is_authenticated %}
         <form action="" method="POST">
           {% csrf_token %}
@@ -124,7 +124,7 @@
       </div>
 
     </div>
-    <!-- Job End -->
+    <!-- Room End -->
 
     <!--   Start -->
     <div class="participants">

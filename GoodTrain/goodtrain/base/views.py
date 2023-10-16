@@ -4,8 +4,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.contrib.auth import authenticate, login, logout
-from .models import User, Train, JobStatus, Job, MatchType, Match, ReviewType, Review, Message
-from .forms import JobForm, UserForm, MyUserCreationForm
+from .models import User, Train, RoomStatus, Room, MatchType, Match, ReviewType, Review, Message
+from .forms import RoomForm, UserForm, MyUserCreationForm
 
 
 def loginPage(request):
@@ -56,86 +56,86 @@ def registerPage(request):
     return render(request, 'base/login_register.html', {'form': form})
 
 
-def get_customer(job):
-    customer_id = Match.objects.filter(job=job, type=MatchType.objects.get_or_create(name='Customer')[0]).values('user')[0]
+def get_customer(room):
+    customer_id = Match.objects.filter(room=room, type=MatchType.objects.get_or_create(name='Customer')[0]).values('user')[0]
     return User.objects.get(id=customer_id['user'])
 
-def get_job_to_customer(jobs):
-    job_to_customer = {}  # Создаем пустой словарь
+def get_room_to_customer(rooms):
+    room_to_customer = {}  # Создаем пустой словарь
 
-    for job in jobs:
-        customer = get_customer(job)
+    for room in rooms:
+        customer = get_customer(room)
         if customer:
-            job_to_customer[job] = customer
+            room_to_customer[room] = customer
     
-    return job_to_customer
+    return room_to_customer
 
 def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
 
-    jobs = Job.objects.filter(
+    rooms = Room.objects.filter(
         Q(train__name__icontains=q) |
         Q(name__icontains=q) |
         Q(description__icontains=q)
     )
 
     trains = Train.objects.all()[0:5]
-    job_count = jobs.count()
-    job_messages = Message.objects.filter(
-        Q(job__train__name__icontains=q))[0:3]
+    room_count = rooms.count()
+    room_messages = Message.objects.filter(
+        Q(room__train__name__icontains=q))[0:3]
 
-    job_to_customer = get_job_to_customer(jobs)  
+    room_to_customer = get_room_to_customer(rooms)  
 
-    context = {'jobs': jobs, 
-               'job_to_customer': job_to_customer, 
+    context = {'rooms': rooms, 
+               'room_to_customer': room_to_customer, 
                'trains': trains,
-               'job_count': job_count, 
-               'job_messages': job_messages}
+               'room_count': room_count, 
+               'room_messages': room_messages}
     
 
     return render(request, 'base/home.html', context)
 
 
-def job(request, pk):
-    job = Job.objects.get(id=pk)
-    job_messages = job.message_set.all()
-    participants_id = Match.objects.filter(job=job).values('user')
+def room(request, pk):
+    room = Room.objects.get(id=pk)
+    room_messages = room.message_set.all()
+    participants_id = Match.objects.filter(room=room).values('user')
     participants = User.objects.filter(id__in=[user_id['user'] for user_id in participants_id])
     print()
     if request.method == 'POST':
         message = Message.objects.create(
             user=request.user,
-            job=job,
+            room=room,
             body=request.POST.get('body')
         )
         message.save()
         if Match.objects.filter(user=request.user).count() == 0:
             match = Match.objects.create(
-                job = job,
+                room = room,
                 user = request.user,
                 type = MatchType.objects.get_or_create(name='Participant')[0]
             )
             match.save()
-        return redirect('job', pk=job.id)
+        return redirect('room', pk=room.id)
     
-    customer_id = Match.objects.filter(job=job, type=MatchType.objects.get_or_create(name='Customer')[0]).values('user')
-    job_customer = User.objects.filter(id=customer_id[0]['user'])[0]
-    context = {'job': job, 'job_messages': job_messages,
+    customer_id = Match.objects.filter(room=room, type=MatchType.objects.get_or_create(name='Customer')[0]).values('user')
+    room_customer = User.objects.filter(id=customer_id[0]['user'])[0]
+    context = {'room': room, 'room_messages': room_messages,
                'participants': participants,
-               'job_customer': job_customer}
-    return render(request, 'base/job.html', context)
+               'room_customer': room_customer}
+    return render(request, 'base/room.html', context)
 
 
 def userProfile(request, pk):
     user = User.objects.get(id=pk)
-    jobs = Job.objects.filter(id__in=[x['job'] for x in 
-        Match.objects.filter(user=user, type=MatchType.objects.get_or_create(name='Customer')[0].id).values('job')
+    rooms = Room.objects.filter(id__in=[x['room'] for x in 
+        Match.objects.filter(user=user, type=MatchType.objects.get_or_create(name='Customer')[0].id).values('room')
     ])
-    job_messages = user.message_set.all()
+    room_messages = user.message_set.all()
     trains = Train.objects.all()
-    job_to_customer = get_job_to_customer(jobs)
-    context = {'user': user, 'job_to_customer': job_to_customer,
-               'job_messages': job_messages, 'trains': trains}
+    room_to_customer = get_room_to_customer(rooms)
+    context = {'user': user, 'room_to_customer': room_to_customer,
+               'room_messages': room_messages, 'trains': trains}
     return render(request, 'base/profile.html', context)
 
 def userBalance(request, pk): # TODO:
@@ -149,23 +149,23 @@ def userBalance(request, pk): # TODO:
 
 
 @login_required(login_url='login')
-def createJob(request):
-    form = JobForm()
+def createRoom(request):
+    form = RoomForm()
     trains = Train.objects.all()
     if request.method == 'POST':
         train_name = request.POST.get('train')
         train, created = Train.objects.get_or_create(name=train_name)
 
-        job = Job.objects.create(
+        room = Room.objects.create(
             train=train,
             name=request.POST.get('name'),
             description=request.POST.get('description'),
-            status = JobStatus.objects.get_or_create(name='Find performer')[0],
+            status = RoomStatus.objects.get_or_create(name='Find performer')[0],
             cost=request.POST.get('cost'),
         )
-        job.save()
+        room.save()
         match = Match.objects.create(
-            job = job,
+            room = room,
             user = request.user,
             type = MatchType.objects.get_or_create(name='Customer')[0],
         )
@@ -173,50 +173,50 @@ def createJob(request):
         return redirect('home')
 
     context = {'form': form, 'trains': trains}
-    return render(request, 'base/job_form.html', context)
+    return render(request, 'base/room_form.html', context)
 
 
 @login_required(login_url='login')
-def updateJob(request, pk):
-    job = Job.objects.get(id=pk)
-    form = JobForm(instance=job)
+def updateRoom(request, pk):
+    room = Room.objects.get(id=pk)
+    form = RoomForm(instance=room)
     trains = Train.objects.all()
-    customer_id = Match.objects.filter(job=job, type=MatchType.objects.get_or_create(name='Customer')[0]).values('user')
-    job_customer = User.objects.filter(id=customer_id[0]['user'])[0]
-    if request.user != job_customer:
+    customer_id = Match.objects.filter(room=room, type=MatchType.objects.get_or_create(name='Customer')[0]).values('user')
+    room_customer = User.objects.filter(id=customer_id[0]['user'])[0]
+    if request.user != room_customer:
         return HttpResponse('Your are not allowed here!!')
 
     if request.method == 'POST':
         train_name = request.POST.get('train')
         train, created = Train.objects.get_or_create(name=train_name)
-        job.name = request.POST.get('name')
-        job.train = train
-        job.description = request.POST.get('description')
-        job.cost = request.POST.get('cost')
-        job.save()
+        room.name = request.POST.get('name')
+        room.train = train
+        room.description = request.POST.get('description')
+        room.cost = request.POST.get('cost')
+        room.save()
         return redirect('home')
 
-    context = {'form': form, 'trains': trains, 'job': job}
+    context = {'form': form, 'trains': trains, 'room': room}
     
-    return render(request, 'base/job_form.html', context)
+    return render(request, 'base/room_form.html', context)
 
-def get_customer(job):
-    customer_id = Match.objects.filter(job=job, type=MatchType.objects.get_or_create(name='Customer')[0]).values('user')
-    job_customer = User.objects.filter(id=customer_id[0]['user'])[0]
-    return job_customer
+def get_customer(room):
+    customer_id = Match.objects.filter(room=room, type=MatchType.objects.get_or_create(name='Customer')[0]).values('user')
+    room_customer = User.objects.filter(id=customer_id[0]['user'])[0]
+    return room_customer
 
 @login_required(login_url='login')
-def deleteJob(request, pk):
-    job = Job.objects.get(id=pk)
-    job_customer = get_customer(job)
+def deleteRoom(request, pk):
+    room = Room.objects.get(id=pk)
+    room_customer = get_customer(room)
 
-    if request.user != job_customer:
+    if request.user != room_customer:
         return HttpResponse('Your are not allowed here!!')
 
     if request.method == 'POST':
-        job.delete()
+        room.delete()
         return redirect('home')
-    context = {'obj': job}
+    context = {'obj': room}
     return render(request, 'base/delete.html', {})
 
 
@@ -254,5 +254,5 @@ def trainsPage(request):
 
 
 def activityPage(request):
-    job_messages = Message.objects.all()
-    return render(request, 'base/activity.html', {'job_messages': job_messages})
+    room_messages = Message.objects.all()
+    return render(request, 'base/activity.html', {'room_messages': room_messages})

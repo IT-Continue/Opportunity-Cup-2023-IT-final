@@ -71,7 +71,7 @@ python manage.py runserver
 <p align="center">
   Страница с заказом
 </p>
-<img src="static\images\job.png">  
+<img src="static\images\room.png">  
 </td>
 </table>
 

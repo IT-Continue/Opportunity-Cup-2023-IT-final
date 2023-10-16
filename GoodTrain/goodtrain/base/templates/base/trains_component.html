@@ -4,11 +4,11 @@
     </div>
     <ul class="trains__list">
         <li>
-            <a href="{% url 'home' %}" class="active">Все поезда <span>{{jobs.count}}</span></a>
+            <a href="{% url 'home' %}" class="active">Все поезда <span>{{rooms.count}}</span></a>
         </li>
         {% for train in trains %}
         <li>
-            <a href="{% url 'home' %}?q={{train.name}}">{{train.name}}<span>{{train.job_set.all.count}}</span></a>
+            <a href="{% url 'home' %}?q={{train.name}}">{{train.name}}<span>{{train.room_set.all.count}}</span></a>
         </li>
         {% endfor %}
 
