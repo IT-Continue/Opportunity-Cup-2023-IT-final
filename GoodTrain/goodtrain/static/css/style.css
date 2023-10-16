@@ -1,15 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
 :root {
-  --color-main: #c31b1c;
+  --color-main: #ca1110;
   --color-main-light: #fff;
+  --color-navbar: #1f1f24;
   --color-dark: #fff;
   --color-dark-medium: #fff;
-  --color-dark-light: #c31b1c;
-  --color-light: #c31b1c;
-  --color-gray: #c31b1c;
-  --color-light-gray: #c31b1c;
-  --color-bg: #fff;
+  --color-dark-light: #ca1110;
+  --color-light: #ca1110;
+  --color-gray: #ca1110;
+  --color-light-gray: #ca1110;
+  --color-fill-gray: #e9eaed;
+  --color-bg: #e9eaed;
   --color-success: #5dd693;
   --color-error: #fc4b0b;
 }
@@ -213,7 +215,7 @@ a {
   position: absolute;
   top: 5rem;
   right: 0.5rem;
-  background: var(--color-dark-light);
+  background: var(--color-dark);
   border-radius: 5px;
   box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.15);
   overflow: hidden;
@@ -297,20 +299,22 @@ a {
 .header__logo > h1 {
   font-weight: 700;
   font-size: 4rem;
-  color: var(--color-light);
+  color: var(--color-dark);
+  background-color: var(--color-main);
 }
 
 .header__search > label {
-  background-color: var(--color-dark-medium);
+  background-color: var(--color-fill-gray);
   padding: 2rem 2rem;
   display: flex;
   align-items: center;
   gap: 2rem;
   border-radius: 4px;
+  border: 2px solid var(--color-navbar);
 }
 
 .header__search svg {
-  fill: var(--color-gray);
+  fill: var(--color-navbar);
   width: 2rem;
   height: 2rem;
   margin-left: 1rem;
@@ -321,7 +325,7 @@ a {
   background: transparent;
   border: none;
   outline: none;
-  color: var(--color-light);
+  color: var(--color-navbar);
 }
 
 @media screen and (max-width: 800px) {
@@ -358,7 +362,7 @@ a {
   align-items: center;
   font-weight: 500;
   text-decoration: none;
-  color: var(--color-gray);
+  color: var(--color-navbar);
 }
 
 .header__menu img {
@@ -458,7 +462,7 @@ a {
 .layout__boxTitle h3 {
   text-transform: uppercase;
   font-weight: 500;
-  color: var(--color-light);
+  color: var(--color-dark);
 }
 
 .layout__boxTitle svg {
