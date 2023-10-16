@@ -20,7 +20,7 @@ class Train(models.Model):
     def __str__(self):
         return self.name
     
-class Transaction(models.Model):
+class TransactionKarma(models.Model):
     name = models.CharField(max_length=200, null=True)
     amount = models.DecimalField(max_digits=20, decimal_places=2, null=False, default=0)
     addition = models.BooleanField(null=False, default=True)

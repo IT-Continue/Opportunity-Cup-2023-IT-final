@@ -832,29 +832,29 @@ a {
 }
 
 /* Стили для таблицы списка зачисления и снятия */
-.transaction-table {
+.transaction_karma-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
 }
 
-.transaction-table th,
-.transaction-table td {
+.transaction_karma-table th,
+.transaction_karma-table td {
   border: 1px solid var(--color-light-gray);
   padding: 10px;
   text-align: center;
 }
 
-.transaction-table th {
+.transaction_karma-table th {
   background-color: var(--color-main);
   color: white;
 }
 
-.transaction-table tbody tr:nth-child(even) {
+.transaction_karma-table tbody tr:nth-child(even) {
   background-color: var(--color-light);
 }
 
-.transaction-table tbody tr:hover {
+.transaction_karma-table tbody tr:hover {
   background-color: var(--color-main-light);
 }
 

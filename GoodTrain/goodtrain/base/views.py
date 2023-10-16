@@ -140,10 +140,10 @@ def userProfile(request, pk):
 
 def userBalance(request, pk): # TODO:
     user = User.objects.get(id=pk)
-    transactions = user.transaction_set.all()
+    transaction_karmas = user.transaction_karma_set.all()
     context = {
         'user': user,
-        'transactions': transactions
+        'transaction_karmas': transaction_karmas
     }
     return render(request, f'base/balance.html', context)
 
