@@ -22,7 +22,7 @@
             {% if request.user.is_authenticated %}
             <div class="header__user">
                 <div class="header__user__balance">
-                    <a href="{% url 'user-balance' user.id %}"><span>Баланс: {{user.balance}} руб.</span></a>
+                    <a href="{% url 'user-balance' user.id %}"><span>Карма: {{user.balance}} руб.</span></a>
                 </div>
                 <a href="{% url 'update-user' %}">
                     <div class="avatar avatar--medium active">
