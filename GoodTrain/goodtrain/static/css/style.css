@@ -310,7 +310,6 @@ a {
   align-items: center;
   gap: 2rem;
   border-radius: 4px;
-  border: 2px solid var(--color-navbar);
 }
 
 .header__search svg {
