@@ -23,7 +23,7 @@
             {% csrf_token %}
             <label for="room_train">Ваша карма: {{user.balance}} </label>
           </form>
-          <table class="transaction-table">
+          <table class="transaction_karma-table">
             <thead>
               <tr>
                 <th>Дата</th>
@@ -33,16 +33,16 @@
               </tr>
             </thead>
             <tbody>
-              {% for transaction in transactions %}
+              {% for transaction_karma in transaction_karmas %}
               <tr>
-                <td>{{transaction.created}}</td>
-                {% if transaction.addition == 1 %}
+                <td>{{transaction_karma.created}}</td>
+                {% if transaction_karma.addition == 1 %}
                 <td>Зачисление</td>
                 {% else %}
                 <td>Списание</td>
                 {% endif %}
-                <td>{{transaction.amount}}</td>
-                <td>{{transaction.name}}</td>
+                <td>{{transaction_karma.amount}}</td>
+                <td>{{transaction_karma.name}}</td>
               </tr>
               {% endfor %}
             </tbody>
