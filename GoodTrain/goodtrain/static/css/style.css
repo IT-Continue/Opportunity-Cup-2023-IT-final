@@ -5,7 +5,7 @@
   --color-main-light: #fff;
   --color-dark: #fff;
   --color-dark-medium: #fff;
-  --color-dark-light: #fff;
+  --color-dark-light: #c31b1c;
   --color-light: #c31b1c;
   --color-gray: #c31b1c;
   --color-light-gray: #c31b1c;
@@ -273,6 +273,9 @@ a {
 .header > .container {
   display: flex;
   gap: 9.5rem;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
 }
 
 .header__user__balance{
@@ -299,10 +302,10 @@ a {
 
 .header__search > label {
   background-color: var(--color-dark-medium);
-  padding: 1.3rem 1rem;
+  padding: 2rem 2rem;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
   border-radius: 4px;
 }
 
@@ -346,6 +349,7 @@ a {
 .header__menu {
   margin-left: auto;
   position: relative;
+  align-items: center;
 }
 
 .header__menu a {
@@ -649,6 +653,7 @@ a {
   background-color: var(--color-dark);
   border-radius: 1rem;
   padding: 2rem;
+  border: 2px solid var(--color-main);
 }
 
 .jobListJob__header {
@@ -749,7 +754,7 @@ a {
   text-transform: uppercase;
   font-weight: 500;
   padding: 1rem 1.5rem;
-  color: var(--color-light);
+  color: var(--color-main-light);
   letter-spacing: 1px;
   font-size: 1.4rem;
 }
@@ -757,7 +762,7 @@ a {
 .activities__box {
   margin: 1.5rem;
   padding: 1.5rem;
-  border: 2px solid var(--color-dark-medium);
+  border: 2px solid var(--color-main);
   border-radius: 5px;
 }
 
