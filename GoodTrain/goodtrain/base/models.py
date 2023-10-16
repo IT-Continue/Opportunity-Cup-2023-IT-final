@@ -14,7 +14,7 @@ class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
-class Topic(models.Model):
+class Train(models.Model):
     name = models.CharField(max_length=200)
 
     def __str__(self):
@@ -27,27 +27,27 @@ class Transaction(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
-class Topic(models.Model):
+class Train(models.Model):
     name = models.CharField(max_length=200)
 
     def __str__(self):
         return self.name
     
-class JobStatus(models.Model):
+class RoomStatus(models.Model):
     name = models.CharField(max_length=200)
 
     def __str__(self):
         return self.name
     
-class Job(models.Model):
+class Room(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
     cost = models.DecimalField(max_digits=20, decimal_places=2, null=False)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
-    topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True)
-    status = models.ForeignKey(JobStatus, on_delete=models.SET_NULL, null=True)
+    train = models.ForeignKey(Train, on_delete=models.SET_NULL, null=True)
+    status = models.ForeignKey(RoomStatus, on_delete=models.SET_NULL, null=True)
 
     class Meta:
         ordering = ['-updated', '-created']
@@ -59,7 +59,7 @@ class MatchType(models.Model):
         return self.name
     
 class Match(models.Model):
-    job = models.ForeignKey(Job, on_delete=models.SET_NULL, null=True)
+    room = models.ForeignKey(Room, on_delete=models.SET_NULL, null=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     created = models.DateTimeField(auto_now_add=True)
     
@@ -87,7 +87,7 @@ class Review(models.Model):
 
 class Message(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    job = models.ForeignKey(Job, on_delete=models.CASCADE)
+    room = models.ForeignKey(Room, on_delete=models.CASCADE)
     body = models.TextField() 
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)

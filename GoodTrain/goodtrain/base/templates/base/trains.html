@@ -1,7 +1,7 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<main class="create-job layout">
+<main class="create-room layout">
   <div class="container">
     <div class="layout__box">
       <div class="layout__boxHeader">
@@ -18,7 +18,7 @@
         </div>
       </div>
 
-      <div class="topics-page layout__body">
+      <div class="trains-page layout__body">
         <form action="" method="GET" class="header__search">
           <label>
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
@@ -31,13 +31,13 @@
           </label>
         </form>
 
-        <ul class="topics__list">
+        <ul class="trains__list">
           <li>
-            <a href="{% url 'topics' %}" class="active">Все поезда <span>{{topics.count}}</span></a>
+            <a href="{% url 'trains' %}" class="active">Все поезда <span>{{trains.count}}</span></a>
           </li>
-          {% for topic in topics %}
+          {% for train in trains %}
           <li>
-            <a href="{% url 'home' %}?q={{topic.name}}">{{ topic.name }} <span>{{topic.job_set.all.count}}</span></a>
+            <a href="{% url 'home' %}?q={{train.name}}">{{ train.name }} <span>{{train.room_set.all.count}}</span></a>
           </li>
           {% endfor %}
 

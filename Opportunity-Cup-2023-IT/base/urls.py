@@ -7,17 +7,17 @@ urlpatterns = [
     path('register/', views.registerPage, name="register"),
 
     path('', views.home, name="home"),
-    path('job/<str:pk>/', views.job, name="job"),
+    path('room/<str:pk>/', views.room, name="room"),
     path('profile/<str:pk>/', views.userProfile, name="user-profile"),
     path('balance/<str:pk>/', views.userBalance, name="user-balance"),
 
-    path('create-job/', views.createJob, name="create-job"),
-    path('update-job/<str:pk>/', views.updateJob, name="update-job"),
-    path('delete-job/<str:pk>/', views.deleteJob, name="delete-job"),
+    path('create-room/', views.createRoom, name="create-room"),
+    path('update-room/<str:pk>/', views.updateRoom, name="update-room"),
+    path('delete-room/<str:pk>/', views.deleteRoom, name="delete-room"),
     path('delete-message/<str:pk>/', views.deleteMessage, name="delete-message"),
 
     path('update-user/', views.updateUser, name="update-user"),
 
-    path('topics/', views.topicsPage, name="topics"),
+    path('trains/', views.trainsPage, name="trains"),
     path('activity/', views.activityPage, name="activity"),
 ]

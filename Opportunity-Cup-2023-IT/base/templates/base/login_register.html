@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="layout__body">
-        <h2 class="auth__tagline">Найди заказчика или исполнителя</h2>
+        <h2 class="auth__tagline">Найди попутчика!</h2>
 
         <form class="form" action="" method="POST">
           {% csrf_token %}
@@ -59,14 +59,14 @@
         </div>
       </div>
       <div class="layout__body">
-        <h2 class="auth__tagline">Найди заказчика или исполнителя</h2>
+        <h2 class="auth__tagline">Найди попутчика!</h2>
 
         <form class="form" action="" method="POST">
           {% csrf_token %}
 
           {% for field in form %}
           <div class="form__group form__group">
-            <label for="job_name">{{field.label}}</label>
+            <label for="room_name">{{field.label}}</label>
             {{field}}
           </div>
           {% endfor %}

@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
-from .models import Job, User
+from .models import Room, User
 from django import forms
 
 
@@ -11,10 +11,10 @@ class MyUserCreationForm(UserCreationForm):
     pass
 
 
-class JobForm(ModelForm):
+class RoomForm(ModelForm):
     class Meta:
-        model = Job
-        fields = ['name', 'description', 'topic', 'cost']
+        model = Room
+        fields = ['name', 'description', 'train', 'cost']
         exclude = []
         widgets = {
             'cost' : forms.TextInput(attrs = {'placeholder': '1000 руб'}),
