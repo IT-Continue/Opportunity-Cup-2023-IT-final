@@ -42,7 +42,7 @@ class RoomStatus(models.Model):
 class Room(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
-    cost = models.DecimalField(max_digits=20, decimal_places=2, null=False)
+    score = models.DecimalField(max_digits=20, decimal_places=2, null=False)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
