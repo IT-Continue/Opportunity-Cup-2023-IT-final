@@ -1,5 +1,5 @@
 <div align="center">
-<img width="30%" src="static\images\logo.avif">
+<img width="30%" src="static\images\RR_logo.svg">
 
 # Continue: goodtrain
 </div>
