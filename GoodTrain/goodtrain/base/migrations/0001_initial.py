@@ -53,7 +53,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=200)),
                 ('description', models.TextField(blank=True, null=True)),
-                ('score', models.DecimalField(decimal_places=2, max_digits=20)),
+                ('cost', models.DecimalField(decimal_places=2, max_digits=20)),
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('updated', models.DateTimeField(auto_now=True)),
             ],

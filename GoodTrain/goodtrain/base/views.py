@@ -161,7 +161,7 @@ def createRoom(request):
             name=request.POST.get('name'),
             description=request.POST.get('description'),
             status = RoomStatus.objects.get_or_create(name='Find performer')[0],
-            score=request.POST.get('score'),
+            cost=request.POST.get('cost'),
         )
         room.save()
         match = Match.objects.create(
@@ -192,7 +192,7 @@ def updateRoom(request, pk):
         room.name = request.POST.get('name')
         room.train = train
         room.description = request.POST.get('description')
-        room.score = request.POST.get('score')
+        room.cost = request.POST.get('cost')
         room.save()
         return redirect('home')
 
