@@ -14,10 +14,10 @@ class MyUserCreationForm(UserCreationForm):
 class RoomForm(ModelForm):
     class Meta:
         model = Room
-        fields = ['name', 'description', 'train', 'cost']
+        fields = ['name', 'description', 'train', 'score']
         exclude = []
         widgets = {
-            'cost' : forms.TextInput(attrs = {'placeholder': '1000 руб'}),
+            'score' : forms.TextInput(attrs = {'placeholder': '88 очков'}),
         }
         
 
