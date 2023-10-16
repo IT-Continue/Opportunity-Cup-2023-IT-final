@@ -945,8 +945,34 @@ a {
 .profile__about h3 {
   text-transform: uppercase;
   color: var(--color-dark-light);
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
 }
+
+.profile__characteristics{
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.profile__characteristics th, .profile__characteristics td {
+  border: 1px solid #000;
+  padding: 8px;
+}
+
+.profile__interests{
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  margin-top: 1.5rem;
+}
+
+.profile__interests th, .profile__interests td {
+  border: 1px solid #000;
+  padding: 8px;
+}
+
 
 .profile-page .roomList__header {
   margin-bottom: 1.5rem;
