@@ -15,7 +15,7 @@
               </path>
             </svg>
           </a>
-          <h3>Заказ</h3>
+          <h3>Купе</h3>
         </div>
         {% if job_customer == request.user %}
         <div class="job__topRight">
@@ -57,7 +57,7 @@
             <span>{{job.created|timesince}} назад</span>
           </div>
           <div class="job__hosted">
-            <p>Заказчик</p>
+            <p>Создатель купе</p>
             <a href="{% url 'user-profile' job_customer.id %}" class="job__author">
               <div class="avatar avatar--small">
                 <img src="{{job_customer.avatar.url}}" />
