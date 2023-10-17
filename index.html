@@ -11,12 +11,7 @@
 </head>
 
 <body>
-
-    <ul class="messages">
-        <li>Всем привет!</li>
-    </ul>
-
-    <script src="{% static 'js/script.js' %}"></script>
+    <script src="GoodTrain/goodtrain/static/js/script.js"></script>
 </body>
 
 </html>
@@ -124,7 +119,7 @@
             </svg>
             2 Подключились
         </a>
-        <p class="roomListRoom__train">Пример названия купе</p>
+        <p class="roomListRoom__train">Фирменный поезд «Арктика»</p>
     </div>
 </div>
 
@@ -140,7 +135,7 @@
           <div class="activities__boxHeader roomListRoom__header">
               <a href="{% url 'user-profile' message.user.id %}" class="roomListRoom__author">
                   <div class="avatar avatar--small">
-                      <img src="GoodTrain/goodtrain/static/images/avatar.svg" />
+                      <img src="GoodTrain/goodtrain/static/images/photo_2023-01-13_13-50-47.jpg" />
                   </div>
                   <p>
                       Пример сообщения пользователя
@@ -161,7 +156,7 @@
   
           </div>
           <div class="activities__boxContent">
-              <div>Сообщение в купе: <a href="{% url 'room' message.room.id %}">“Пример названия купе”</a></div>
+              <div>Сообщение в купе: <a href="{% url 'room' message.room.id %}">“16.10.2023 Москва – Мурманск: 35 ч. 3 мин.”</a></div>
               <div class="activities__boxRoomContent">Пример сообщения пользователя</div>
           </div>
       </div>
