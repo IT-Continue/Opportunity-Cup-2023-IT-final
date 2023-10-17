@@ -1,5 +1,5 @@
 <div align="center">
-<img width="30%" src="static\images\RR_logo.svg">
+<img width="30%" src="static\images\RR_logo.png">
 
 # Continue: Opportunity-Cup-2023-IT-final
 Система персональных рекомендаций для пассажиров "Нам по пути"
