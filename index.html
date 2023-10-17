@@ -72,7 +72,7 @@
       <div class="roomList__header">
         <div>
           <h2>Поезда</h2>
-          <p>Доступно: {{room_count}} купе</p>
+          <p>Доступно: 1 купе</p>
         </div>
 
         <a class="btn btn--main" href="{% url 'create-room' %}">
@@ -91,7 +91,7 @@
 
         <a href="{% url 'user-profile' room_customer.id %}" class="roomListRoom__author">
             <div class="avatar avatar--small">
-                <img src="{{room_customer.avatar.url}}" />
+                <img src="GoodTrain/goodtrain/static/images/photo_2023-01-13_13-50-47.jpg" />
             </div>
             <span>@artiom</span>
         </a>
@@ -100,7 +100,7 @@
         </div>
     </div>
     <div class="roomListRoom__content">
-        <a href="{% url 'room' room.id %}">{{room.name}}</a>
+        <a href="{% url 'room' room.id %}">16.10.2023 Москва – Мурманск: 35 ч. 3 мин.</a>
         <p><span class="cost">Score: 22/100
                      
         </span></p>
@@ -140,7 +140,7 @@
           <div class="activities__boxHeader roomListRoom__header">
               <a href="{% url 'user-profile' message.user.id %}" class="roomListRoom__author">
                   <div class="avatar avatar--small">
-                      <img src="{{message.user.avatar.url}}" />
+                      <img src="GoodTrain/goodtrain/static/images/avatar.svg" />
                   </div>
                   <p>
                       Пример сообщения пользователя

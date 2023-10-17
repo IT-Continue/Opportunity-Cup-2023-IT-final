@@ -3,6 +3,9 @@
 
 # Continue: Opportunity-Cup-2023-IT-final
 Система персональных рекомендаций для пассажиров "Нам по пути"
+
+# [Ссылка на GitHub Pages](https://it-continue.github.io/Opportunity-Cup-2023-IT-final/)
+# [Ссылка на сайт (pythonenywhere)](https://vladk711.pythonanywhere.com/)
 </div>
 
 ### Клонируйте репозиторий
@@ -15,7 +18,7 @@ git clone https://github.com/IT-Continue/Opportunity-Cup-2023-IT-final.git
 
 --> Перейдите в директорию с проектными файлами : 
 ```bash
-cd GF
+cd Opportunity-Cup-2023-IT-final/GoodTrain/goodtrain/
 
 ```
 
