@@ -65,14 +65,14 @@ python manage.py runserver
 <p align="center">
   Главная страница
 </p>
-<img src="static\images\home.png">
+<img src="GoodTrain\goodtrain\static\images\home.png">
 </td> 
 <td width="50%">
 <br>
 <p align="center">
-  Страница с заказом
+  Страница купе
 </p>
-<img src="static\images\room.png">  
+<img src="GoodTrain\goodtrain\static\images\room.png">  
 </td>
 </table>
 
