@@ -1,5 +1,5 @@
 <div align="center">
-<img width="30%" src="static\images\RR_logo.png">
+<img width="30%" src="GoodTrain\goodtrain\static\images\RR_logo.png">
 
 # Continue: Opportunity-Cup-2023-IT-final
 Система персональных рекомендаций для пассажиров "Нам по пути"
@@ -9,7 +9,7 @@
 
 --> Клонируйте репозиторий данной командой :
 ```bash
-git clone https://github.com/ArtiomNosov/Opportunity-Cup-2023-IT
+git clone https://github.com/IT-Continue/Opportunity-Cup-2023-IT-final.git
 
 ```
 
